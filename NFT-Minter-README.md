@@ -181,3 +181,31 @@ BigNumber to string solution from:
 Pass the tokenId through `onChange({e => handleChange(e, nft.metadata.id )})` from: https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
 How to make React Dropdown Component: https://blog.logrocket.com/customize-reusable-react-dropdown-menu-component/
+
+```js
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+
+```
+
+Then we found this one from: https://dev.to/crishanks/deploy-host-your-react-app-with-cpanel-in-under-5-minutes-4mf6
+
+```js
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+
+</IfModule>
+
+```
