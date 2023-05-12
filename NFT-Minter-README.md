@@ -151,7 +151,7 @@ module.exports = {
 
 # Inherit from 721 NOT ERC721Base for now (which is just 721A which uses \_safeMint(\_to, quantity))
 
-The **721Base / 721A \_safeMint()** function is why we are getting the "MintZero" error of death:
+The **721Base / 721A / \_safeMint()** function is why we are getting the "MintZero" error of death:
 
 ```js
  function _safeMint(
@@ -175,8 +175,6 @@ special thanks to the tutorial here: https://stackblitz.com/edit/react-hooks-boo
 External Linking Solution From: https://herewecode.io/blog/react-router-link-to-external-url/
 
 Bootstrap Alerts: https://getbootstrap.com/docs/4.0/components/alerts/
-
-BigNumber to string solution from:
 
 Pass the tokenId through `onChange({e => handleChange(e, nft.metadata.id )})` from: https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields
 
@@ -208,4 +206,65 @@ Then we found this one from: https://dev.to/crishanks/deploy-host-your-react-app
 
 </IfModule>
 
+```
+
+## JavaScript Heap Error
+
+- Followed this MakeUseOf.com article on [changing the system settings of your computer for the NODE_OPTIONS](https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/) variable to `--max-old-space-size=4096`.
+
+- Solution: Remove unneeded modules imported into project.
+
+## BigNumber to Number for tokenID
+
+Another solution from [ethereum stackexhange using ethers.utils](https://www.makeuseof.com/javascript-heap-out-of-memory-error-fix/)
+
+Haven't confirmed that it's working for us.
+
+```js
+hexText = "0x0000000000000000000000000000000000000000000000000000000000034797";
+numb = new ethers.utils.BigNumber(hexText).toNumber();
+console.log(numb);
+```
+
+## Form in mapped data, pass correct object id
+
+Solution came from [this Stack Overflow Article](https://stackoverflow.com/questions/68256270/react-map-method-render-input-dynamically-change-value-separate-fields)
+
+**Stack solution, passing id to the function that hanndles onChange(e, nft.metadata.id)**
+
+```js
+//Mapped form:
+const [roomRent, setRoomRent] = useState(rooms);
+
+roomRent.map((roomData) => {
+  return (
+    <>
+      <div className={classes.Roomview}>
+        <div key={roomData.id} className={classes.roomavailable}>
+          <input
+            name="roomRent"
+            type="text"
+            value={roomData.room}
+            className={classes.input}
+            onChange={(e) => handleroom(e, roomData.id)}
+          />
+        </div>
+        <div className={classes.roomSold}>
+          <p>{roomData.sold} Sold</p>
+        </div>
+      </div>
+    </>
+  );
+});
+
+//handleroom function:
+const handleroom = (e, id) => {
+  var result = [...roomRent]; //<- copy roomRent into result
+  result = result.map((x) => {
+    //<- use map on result to find element to update using id
+    if (x.id === id) x.room = e.target.value;
+    return x;
+  });
+  setRoomRent(result); //<- update roomRent with value edited
+};
 ```
