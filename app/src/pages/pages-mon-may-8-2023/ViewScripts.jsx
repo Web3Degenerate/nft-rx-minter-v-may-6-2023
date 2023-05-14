@@ -16,6 +16,7 @@ import axios from 'axios';
 
 import { alertService } from '../services';
 
+// Display NFTs from: https://blog.thirdweb.com/guides/create-an-nft-gallery-using-thirdweb-and-next-js/
 
 
 const ViewScripts = () => {
