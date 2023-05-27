@@ -22,6 +22,9 @@ import axios from 'axios';
 
 import { ethers } from 'ethers';
 
+import { addyShortner } from '../utils'
+import { solidityContractAddress } from '../constants'
+
 import { GetMedication } from '../components';
 
 const ViewScripts = () => {
@@ -43,12 +46,17 @@ const ViewScripts = () => {
 // const { contract } = useContract("0x135B8F385f8FaE5ab558d2D2A7A5d33a99184485"); // 11.7 - Improved metadata and function callls (5/21/23)
   // const { contract } = useContract("0xd76F7225D8563071d04f16FF26873f7B4468bD5D"); // 11.9 - Improved metadata and function callls (5/21/23)
  
-  const { contract } = useContract("0xE5960C2422B192a54988D0b7d7cD6d3f8A3a7794"); // 12.1 - Improved metadata  (5/23/23)
+  // const { contract } = useContract("0xE5960C2422B192a54988D0b7d7cD6d3f8A3a7794"); // 12.1 - Improved metadata  (5/23/23)
+  const { contract } = useContract(solidityContractAddress); // 12.1 - Improved metadata  (5/23/23)
+
+
+  
 
 
  // Your NFT collection contract address
 //  const contractAddress = "0xE0a73cAEb01ABdee510993F2d6a525b9948B49dF"; // 11.0
  const contractAddress = "0xE5960C2422B192a54988D0b7d7cD6d3f8A3a7794"; // 12.1
+
 
  const pharmacyContractAddress = "0x684E9cA3BDf984769531Af2778957815EB096e01";
  
@@ -71,7 +79,7 @@ const ViewScripts = () => {
 
 
 // (~16th min to -16:30) - map over nfts in return stmt that we grab here (metadata.nft)  https://youtu.be/cKc8JVl_u30?t=990
- const { data: nfts } = useOwnedNFTs(contract, address);
+ const { data: nfts, isLoading: loading } = useOwnedNFTs(contract, address);
  console.log(nfts)
 
  const { data: nftsPharma } = useOwnedNFTs(pharmacyContract, address)
@@ -97,12 +105,12 @@ const ViewScripts = () => {
 
 //***********************************  UTILITY FUNCTIONS *******************************************/
 
- const addyShortner = (address) => {
-  let tempAddy = String(address);
-    // String(address).substring(0, 6) + "..." + String(address).substring(address.length - 4);
-    const tinyAddy = tempAddy.substring(0, 6) + "..." + tempAddy.substring(37)
-    return tinyAddy;
- }
+//  const addyShortner = (address) => {
+//   let tempAddy = String(address);
+//     // String(address).substring(0, 6) + "..." + String(address).substring(address.length - 4);
+//     const tinyAddy = tempAddy.substring(0, 6) + "..." + tempAddy.substring(37)
+//     return tinyAddy;
+//  }
 
  const getDob = async (tokenId) => {   
   try{       
@@ -512,10 +520,20 @@ const getBigNumberish = async (tokenIdz) => {
 
 }
 
+let showLoading
+let showAfterLoading
+if (loading) {
+  showLoading = "block"
+  showAfterLoading = "none"
+}else{
+  showLoading = "none"
+  showAfterLoading = "block"
+}
+// let medication
 
-let medication
-
-
+// if (loading) {
+//   return <div className="container">Loading NFT Scripts...</div>
+// }
 
   return (
 <>
@@ -578,7 +596,14 @@ let medication
                 }
                 ).map((nft) => ( */}
 
-            {nfts?.map((nft) => (
+
+      <div style={{display:`${showLoading}`}}>
+          <h3 style={{color:"white"}}>Loading NFT Scripts...</h3>
+      </div>
+
+      <div style={{display:`${showAfterLoading}`}}>
+            {nfts?.length > 0 ? 
+              nfts.map((nft) => (
           
               <div className="item text-left">  
                 <div className="title" onClick={() => toggleNFT(nft.metadata.id)}>
@@ -699,7 +724,19 @@ let medication
             </div>
           </div> 
 
-                ))} 
+              )) : (
+                
+                  <>
+                    <div className="text-center">
+                      <h3 style={{color:"white"}}>No NFT Scripts found for Address:</h3>
+                      <h5 style={{color:"white"}}>{address}</h5>
+                      <h5 style={{color:"white"}}>Please contact your doctors office if you need further assistance.</h5>
+                    </div>
+                  </>
+              )}
+        </div>{/* closing div for show scripts or no scripts message based on loading */}
+      
+
           </div>{/* closing div for view-scripts-cards */}
       </div> {/* closing div for accordion */}
     </div> {/* closing div for wrapper */}
