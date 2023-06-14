@@ -1,18 +1,20 @@
-import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia, Web3Button, 
-  useTransferNFT, MediaRenderer, useMetadata } from "@thirdweb-dev/react";
+// import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia, Web3Button, 
+//   useTransferNFT, MediaRenderer, useMetadata } from "@thirdweb-dev/react";
 // import "./styles/Home.css";
 // import "./styles/globals.css";
 //weird error "The requested module '/node_modules/.vite/deps/@thirdweb-dev_react.js?v=71415013' does not provide an export named 'NFTCollection'"
 // (at App.jsx:2:47): so we removed NFTCollection from the thirdweb-dev/react import above.
 
-import { useState } from 'react'
+// import { useState } from 'react'
 
-import { Link, useNavigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+  //removed: Link, useNavigate, 
 
-import { FormField, CustomButton } from './components';
+// import { FormField, CustomButton } from './components';
 
 import { Navbar } from './components';
-import { CreateScript, ViewScripts, AddPatient, EditPatient, Home, EditPharmacy, ListPharmacies } from './pages';
+import { CreateScript, ViewScripts, AddPatient, EditPatient, Home, EditPharmacy, 
+  ListPharmacies, PharmacyReview, PharmacyDashboard, PatientHistory, TokenHistory, TokenHistoryOld, FaxPageTest } from './pages';
 
 // import "./styles.css";
 // import "./styles/App.css";
@@ -55,6 +57,18 @@ return (
                               <Route path="/pharmacy-list" element={ <ListPharmacies /> } />
 
                               <Route path="/edit-pharmacy/:id" element={ <EditPharmacy /> } />
+
+                              <Route path="/pharmacy-review-nft/:id" element={ <PharmacyReview /> } />
+                              <Route path="/pharmacy-dashboard" element={ <PharmacyDashboard /> } />
+                              
+                              <Route path="/patient-history/:id" element={ <PatientHistory /> } />
+
+                              <Route path="/prescription-history/:id" element={ <TokenHistory /> } />
+
+                              <Route path="/token-detail/:id" element={ <TokenHistoryOld /> } />
+
+                              <Route path="/fax-test/" element={ <FaxPageTest /> } />
+
 
                             {/* <Route path="/add-medication/" element={ <EditPatient /> } /> */}
                             {/* <Route path="/all-scripts/" element={ <AllScripts /> } /> */}
