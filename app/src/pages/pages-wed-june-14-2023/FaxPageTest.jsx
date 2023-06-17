@@ -62,7 +62,8 @@ const FaxPageTest = () => {
 
     const [scriptFax, setScriptFax] = useState({
         script_image_name: "script-Image-Test-6.14.23.jpg",
-        script_image: "fileupload/images/script-Image-Test-6.14.23.jpg"
+        script_image_location: "fileupload/images/script-Image-Test-6.14.23.jpg",
+        pharmacy_fax: "17162106152"
         // script_image: "Files/script-Image-Test-6.14.23.jpg"
     });
     // const {script_image_name,script_image} = patient; 
@@ -71,6 +72,10 @@ const FaxPageTest = () => {
 //https://youtu.be/fFx4Pbe9dAs?t=773
     const [msg, setMsg] = useState('')
 
+    console.log('scriptFax pharmacy_fax BEFORE handleClickedr is ', scriptFax.pharmacy_fax)
+    console.log('scriptFax pharmacy_fax BEFORE handleClickedr is ', scriptFax.script_image_location)
+
+
     const handleClicker = e => {
         // e.preventDefault(); 
             // if (confirm(`Send Script Image named ${scriptFax.script_image_name} to Pharmacy? `) == true){            
@@ -78,9 +83,12 @@ const FaxPageTest = () => {
                 // setRxWallet({...rxWallet,[e.target.name]: e.target.value, tokenId: id, pharmacyName: options[e.target.selectedIndex].text })
                 // setScriptFax({...scriptFax,script_image: e.target.files[0]})
                 console.log("selected file is: **",e.target.files[0])
+                console.log("name of selected file is: ", e.target.files[0].name)
+
+                setScriptFax({...scriptFax, script_image_name: e.target.files[0].name, script_image_location: `fileupload/images/${e.target.files[0].name}`});
 
                 console.log("selectedFile inside handleClicker is: ",selectedFile)
-                console.log("MEAN FUCKING WHILE, scriptFax is: ",scriptFax)
+                console.log("scriptFax inside handleClicker (after setScriptFax) is: ",scriptFax)
                     // setScriptFax({script_image_name: "script-Image-Test-6.14.23", script_image: scriptImageTest});
 
                             // const selectedFile = event.target.files[0];
@@ -96,10 +104,11 @@ const FaxPageTest = () => {
 
     console.log('selectedFile outside of handleClicker is: ', selectedFile)
     console.log('scriptFax outside of handleClicker is: ', scriptFax)
+    console.log('scriptFax pharmacy_fax outside of handleClickedr is ', scriptFax.pharmacy_fax)
 
 
 
-    const handleSubmitter = (e) => {
+    const handleSubmitter = async (e) => {
         e.preventDefault();
         // https://youtu.be/fFx4Pbe9dAs?t=474
         const formData = new FormData(); 
@@ -108,7 +117,7 @@ const FaxPageTest = () => {
         
         try{
                     // await axios.post("https://rxminter.com/srfax/Queue_Fax.php", scriptFax).then((result)=>{
-                    axios.post("https://rxminter.com/srfax/fileupload/insert-image.php", formData
+                    await axios.post("https://rxminter.com/srfax/fileupload/insert-image.php", formData
                                 // , {
                                 //     headers: {
                                 //         'accept': 'application/json',
@@ -120,13 +129,13 @@ const FaxPageTest = () => {
                         
                         console.log(result);
                     
-                        // if(result.data.status == "valid"){
-                        if(result.data.valid){
-                            alert('HOLY SHIT! IT WORKS! IT WORKS!')
+                        if(result.data.status == "valid"){
+                        // if(result.data.valid){
+                            // alert('Upload Complete')
                             // alertService.success(`Success, The Fax Image Named ${scriptFax.script_image_name} has been sent!`, options);
                             alertService.success(`Success, The Image has been uploaded!`, options);
                             setMsg('Script Uploaded To The Pharmacist Successfully!')
-
+                            sendFax();
 // *********************** THEN CALL THE sendFax() function with the name stirngs to find the image uploaded in this handleSubmitter function.                          
 
                         }else{
@@ -146,25 +155,25 @@ const FaxPageTest = () => {
 
 // ***************************************** SEND THE FAX ******************************************************************** //
    
-    const fetchFax = () => {
+    // const fetchFax = () => {
 
-        try{
-            fetch("https://rxminter.com/srfax/Queue_Fax.php", {
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
-                "body": JSON.stringify(scriptFax)
-            }).then(function(response){
-                return response.text();
-            }).then(function(data){
-                console.log("fetch fax response:",data)
-            })
-        }catch(error){
-            console.log(error); 
+    //     try{
+    //         fetch("https://rxminter.com/srfax/Queue_Fax.php", {
+    //             "method": "POST",
+    //             "headers": {
+    //                 "Content-Type": "application/json; charset=utf-8"
+    //             },
+    //             "body": JSON.stringify(scriptFax)
+    //         }).then(function(response){
+    //             return response.text();
+    //         }).then(function(data){
+    //             console.log("fetch fax response:",data)
+    //         })
+    //     }catch(error){
+    //         console.log(error); 
             
-        }
-    }
+    //     }
+    // }
 
 
 
@@ -183,7 +192,7 @@ const FaxPageTest = () => {
 
     try{
         // await axios.post("https://rxminter.com/srfax/Queue_Fax.php", scriptFax).then((result)=>{
-        axios.post("https://rxminter.com/srfax/Queue_Fax.php", scriptFax
+        axios.post("https://rxminter.com/srfax/Staging_Queue_Fax.php", scriptFax
         // , {
         //     headers: {
         //         'accept': 'application/json',
@@ -201,7 +210,7 @@ const FaxPageTest = () => {
             if(result.data.status == 'valid'){
                 // navigate('/');
                 alert('HOLY SHIT! IT WORKS! IT WORKS!')
-                alertService.success(`Success, The Fax Image Named ${scriptFax.script_image_name} has been sent!`, options);
+                alertService.success(`Valid, The Fax Image Named ${scriptFax.script_image_name} has been sent!`, options);
             }else{
                 alert('There is a problem sending this fax script to the pharmacy. Please try again.');
                 alertService.error(`Error with error message of :(`, options);
