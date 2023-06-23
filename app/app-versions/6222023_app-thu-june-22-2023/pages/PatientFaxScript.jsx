@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "../styles/App.css"; //  import "../styles/ViewScripts.css";
 import axios from 'axios'; 
 import html2canvas from 'html2canvas';
+//https://www.npmjs.com/package/html2canvas  => https://github.com/niklasvh/html2canvas 
+
 
 import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia, 
     useTransferNFT, useMetadata, useNFT, MediaRenderer, useContractRead } from "@thirdweb-dev/react";
@@ -17,6 +19,8 @@ import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia,
     formatDateTwoDigit, convertNumberDateToFourDigitString, convertNumberDateToTwoDigitString, convertBigNumberToTwoDigitYear, 
     convertBigNumberToRawString, RemedySvgPdfGenerator } from '../utils'
     //work out: dayCalculatorDoc
+
+    import { RemedySvgForJorgeRucker } from '../doctorSigGeorge'
 
   import { solidityContractAddress } from '../constants'
   
@@ -234,19 +238,20 @@ useEffect(() => {
 // },[pharmacyFax])
 },[nft])
 
-// let remedyPatientName = nft?.metadata.name
-// let remedyRxDate = convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value)
-// let remedyPtAddress = nft?.metadata.attributes[10].value
-// let remedySig = nft?.metadata.description
-// let remedyMedication = nft?.metadata.attributes[0].value
-// let remedyQuantity = nft?.metadata.attributes[2].value
 
 const handleConvertClickerInternal = async () => {
 
-    // const svgElement = RemedySvgPdfGenerator(remedyPatientName, remedyRxDate, remedyPtAddress, remedySig, remedyMedication, remedyQuantity)
-    const svgElement = await RemedySvgPdfGenerator(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
-    nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
+    const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+        nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
 
+    // if(nft?.metadata.attributes[8].value == 'Jorge Rakkar, M.D.'){
+    //     // const svgElement = RemedySvgPdfGenerator(remedyPatientName, remedyRxDate, remedyPtAddress, remedySig, remedyMedication, remedyQuantity)
+    //     const svgElement = await RemedySvgPdfGenerator(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+    //     nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
+    // }else{
+    //     const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+    //     nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
+    // }
     console.log("svgElement Test is ", svgElement)
     setGenerateSVGAuto(svgElement)
     // return imageLocation = 'data:image/svg+xml;base64,' + btoa(svgData);
