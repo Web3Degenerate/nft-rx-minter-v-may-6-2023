@@ -758,7 +758,7 @@ if (loading) {
                                   <p><b>Patient:</b> {nft.metadata.name} | <b>DOB:</b> {formatDateFourDigitYear(nft.metadata.attributes[1].value)}</p>
 
                                   {/* <p><b>DOB:</b> {nft.metadata.dob}</p> */}
-                                  <p><b>SIG:</b> {nft.metadata.description}</p>
+                                  <p className="hyphens"><b>SIG:</b> {nft.metadata.description}</p>
                                   <p><b>Medication</b> {nft.metadata.attributes[0].value}</p>
                                   {/* <p><b>Medication</b> { getMedicationString(nft.metadata.id).toString()  }</p> */}
                                   {/* <p><b>Medication</b> { useContractRead(contract, "getMedication", [nft.metadata.id])  }</p> */}
