@@ -41,6 +41,8 @@ const PatientFaxScript = () => {
 
     const { id } = useParams();
 
+    const navigate = useNavigate(); 
+
     const { contract } = useContract(solidityContractAddress);
     const address = useAddress(); 
 
@@ -224,7 +226,7 @@ const _safeTransferFromToPharmacy = async () => {
               
                       alert(`Success! Your NFT Prescription has been sent to pharmacy ${pharmacyFax.pharmacy_name} at address ${pharmacyFax.pharmacy_wallet}. If you have any further questions, please call Rx Minter's dedicated Support Team located in Palau.`);
                     //   setRxWallet({ tokenId: '', rxwallet: '', pharmacyName: '' })
-                            
+                      navigate('/view-script')      
               } catch (error) {
                       console.log("contract call failure", error)
                       alert("Your NFT Prescription has NOT been sent.  Please try again or contact Rx Minter's Support Team located in Palau.");
@@ -241,19 +243,31 @@ useEffect(() => {
 
 const handleConvertClickerInternal = async () => {
 
-    const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
-        nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
+    // const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+    //     nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
 
-    // if(nft?.metadata.attributes[8].value == 'Jorge Rakkar, M.D.'){
-    //     // const svgElement = RemedySvgPdfGenerator(remedyPatientName, remedyRxDate, remedyPtAddress, remedySig, remedyMedication, remedyQuantity)
-    //     const svgElement = await RemedySvgPdfGenerator(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
-    //     nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
-    // }else{
-    //     const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
-    //     nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, nft?.metadata.attributes[2].value )
-    // }
-    console.log("svgElement Test is ", svgElement)
-    setGenerateSVGAuto(svgElement)
+    if(nft?.metadata.attributes[8].value == 'Dr. Jorge Rucker, M.D.'){
+        // const svgElement = RemedySvgPdfGenerator(remedyPatientName, remedyRxDate, remedyPtAddress, remedySig, remedyMedication, remedyQuantity)
+
+        let remedyDisp = nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value;
+
+        const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+        nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, remedyDisp )
+
+        console.log("svgElement Test is ", svgElement)
+        setGenerateSVGAuto(svgElement)
+    }else{
+        let remedyDisp = nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value;
+
+        const svgElement = await RemedySvgPdfGenerator(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
+        nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, remedyDisp )
+
+        console.log("svgElement Test is ", svgElement)
+        setGenerateSVGAuto(svgElement)
+    }
+
+    // console.log("svgElement Test is ", svgElement)
+    // setGenerateSVGAuto(svgElement)
     // return imageLocation = 'data:image/svg+xml;base64,' + btoa(svgData);
 }
 
@@ -323,9 +337,9 @@ const [displaySelectedPharmacy, setDisplaySelectedPharmacy] = useState('The Phar
     <> */}
     <h2>Script Preview for Medication {nft?.metadata.attributes[0].value}</h2>
         <hr></hr>
-        
-        <div ref={svgContainerInternal} className="svg-component">
-                 
+
+        {/* <div ref={svgContainerInternal} className="svg-component"> */}
+        <div ref={svgContainerInternal}>          
                 {generateSVGAuto}   
         </div>       
       
@@ -395,7 +409,6 @@ const [displaySelectedPharmacy, setDisplaySelectedPharmacy] = useState('The Phar
 
 {/* IMAGE ******************************************************************************* */}
         <div style={{visibility:"hidden"}} > 
-            <h2>Image Conversion Here:</h2>
             <img src={getImageDataUrl} />
         </div>  
     {/* </>

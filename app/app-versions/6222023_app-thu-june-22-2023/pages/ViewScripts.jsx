@@ -806,7 +806,7 @@ if (loading) {
                                 </div>
                           </div>
                     </form> */}
-                    <h5>The tokenId is {nft.metadata.id}</h5>
+                   
                 <Link className="btn btn-primary" to={`/patient-fax-script/${nft.metadata.id}`}>Send {nft.metadata.attributes[0].value} To A Pharmacy</Link>
               </div>
             </>
