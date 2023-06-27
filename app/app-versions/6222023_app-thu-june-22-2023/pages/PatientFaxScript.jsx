@@ -240,6 +240,19 @@ useEffect(() => {
 // },[pharmacyFax])
 },[nft])
 
+const [remedyPatientName, setRemedyPatientName] = useState('')
+//"Mary Damon Burke   |   DOB: 11/22/1953"
+const [rxRemedyDate, setRemedyRxDate] = useState('')
+const [remedyMedication, setRemedyMedication] = useState('')
+const [remedyQuantity, setRemedyQuantity] = useState('')
+
+const [remedyPhysicalAddress, setRemedyPhysicalAddress] = useState('')
+const [remedySig, setRemedySig] = useState('')
+
+
+
+
+
 
 const handleConvertClickerInternal = async () => {
 
@@ -251,10 +264,14 @@ const handleConvertClickerInternal = async () => {
 
         let remedyDisp = nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value;
 
+        // const svgElement = await RemedySvgForJorgeRucker("Mary Damon Burke    |    DOB: 11/22/1953", "6/26/2023", 
+        // "123 Market Street, San Francisco, CA 94101", "MRI L Spine", 
+        // "Indication - low back pain, lumbar radiculopathy", "M54.16" )
+
         const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
         nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, remedyDisp )
 
-        console.log("svgElement Test is ", svgElement)
+        console.log("Jorge svgElement Test is ", svgElement)
         setGenerateSVGAuto(svgElement)
     }else{
         let remedyDisp = nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value;
@@ -262,7 +279,8 @@ const handleConvertClickerInternal = async () => {
         const svgElement = await RemedySvgPdfGenerator(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
         nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, remedyDisp )
 
-        console.log("svgElement Test is ", svgElement)
+
+        console.log("Other svgElement Test is ", svgElement)
         setGenerateSVGAuto(svgElement)
     }
 
@@ -270,6 +288,20 @@ const handleConvertClickerInternal = async () => {
     // setGenerateSVGAuto(svgElement)
     // return imageLocation = 'data:image/svg+xml;base64,' + btoa(svgData);
 }
+
+    const handleConvertClickerManual = async (e) => {
+
+        let remedyDisp = nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value;
+
+        //convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value)
+
+        const svgElement = await RemedySvgForJorgeRucker(remedyPatientName, rxRemedyDate, 
+        // nft?.metadata.attributes[10].value, nft?.metadata.description, remedyMedication, remedyQuantity )
+        remedyPhysicalAddress, remedySig, nft?.metadata.attributes[0].value, remedyDisp )
+        
+        setGenerateSVGAuto(svgElement)
+
+    }
 
 
 // const generateSVGAuto = handleConvertClickerInternal()
@@ -336,6 +368,45 @@ const [displaySelectedPharmacy, setDisplaySelectedPharmacy] = useState('The Phar
 {/* {!isLoadingNFT ? ( 
     <> */}
     <h2>Script Preview for Medication {nft?.metadata.attributes[0].value}</h2>
+
+
+    <div className="row">
+        <label>Patient Name</label>
+        <input placeholder={nft?.metadata.name} type="text" className="form-control" onChange={(event) => {setRemedyPatientName(event.target.value)}} />
+    </div>     
+
+    <div className="row">
+        <label>Patient Physical Address</label>
+        <input placeholder={nft?.metadata.attributes[10].value} type="text" className="form-control" onChange={(event) => {setRemedyPhysicalAddress(event.target.value)}} />
+    </div>   
+
+    <div className="row">
+        <label>Sig</label>
+        <input placeholder={nft?.metadata.description} type="text" className="form-control" onChange={(event) => {setRemedySig(event.target.value)}} />
+    </div>  
+
+
+    <div className="row">
+        <div className="col-md-4">
+            <label>Prescribed/Ordered</label>
+            <input placeholder={convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value)} type="text" className="form-control" onChange={(event) => {setRemedyRxDate(event.target.value)}} />
+        </div>   
+
+        <div className="col-md-4">
+            <label>Medication/Test Name</label>
+            <input placeholder={nft?.metadata.attributes[0].value} type="text" className="form-control" onChange={(event) => {setRemedyMedication(event.target.value)}} />
+        </div>  
+
+        <div className="col-md-4">
+            <label>DISP# / DX Codes</label>
+            <input placeholder={nft?.metadata.attributes[2].value - nft?.metadata.attributes[3].value} type="text" className="form-control" onChange={(event) => {setRemedyQuantity(event.target.value)}} />
+        </div>  
+
+    </div>   
+            
+        
+
+        <button className="btn btn-success" onClick={(e) => handleConvertClickerManual(e)}>Manually Update Script</button>
         <hr></hr>
 
         {/* <div ref={svgContainerInternal} className="svg-component"> */}
