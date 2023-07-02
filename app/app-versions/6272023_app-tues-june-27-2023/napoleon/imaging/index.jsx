@@ -1,5 +1,5 @@
 //Inkscape Word Doc Clean Imaging Order: 
-export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig) => {
+export const RemedySvgMriOrder = (remedyPatientName, remedyDOB, remedyQuantity, remedyPhysicalAddress, remedySig, remedyPrescribedDate) => {
     return (       
         <svg
         version="1.1"
@@ -7,9 +7,9 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
         width="1056"
         height="816"
         viewBox="0 0 1056 816"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2000/svg"
-        xmlns:svg="http://www.w3.org/2000/svg">
+        svg="http://www.w3.org/2000/svg">
        <defs
           id="defs666">
          <rect
@@ -708,9 +708,9 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
            <image
               width="1"
               height="1"
-              style="image-rendering:optimizeSpeed"
+              image-rendering="optimizeSpeed"
               preserveAspectRatio="none"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAABwCAAAAAA4MAG1AAAAAXNCSVQI5gpbmQAAAfxJREFUaIHtmVGTwyAIhJOb+/9/2XtLNQrsLrST3rhP6dTwBUQ05Di2tra2bJ3XVeNv0UgwSMWpJB6WIJEsYZ5E1H0sy8NZ08jG/M2gfFNrM8HDGPoBxw22pRU1kSAr/SB0ZhWfDqlOiKReoFMqiXeqwKcPkrDwySQ6fD5JqYUaqVI+SdxeBdJ/jJ4j2t0Kn7DZfH70+Fwp8AlcCiJJSP/fNOed5wgJxPt0i1vivMdNAVEYc7nHVGApIwROhsTuKCqJ37kEkrg9BqTzGJMxsQkDuaccwjVSEQpaTyWoibS0VHFG4muE6hT4plYQP9SnPAp/d7eX1Yo8h+aJZ6Ns/Ih39yQKW08+Cltt8v7UOvtQHaYyYrBgOm+0YLjcA+JktnrILDezoi0GpEiD2nzpOM2S1lMFgHifVigEJERvRkEgZZ4sg0FiZitsu1yKVgDb8V2MwUCaTwur8ZqO+uWGBXBYr1eFXdexhhoKBX7XkKZz1Bf0YbEdpII0CkDpc82+xMsk+qPN5zpUok9CPdJIV1ElGjtS9F72iVzPdKjiT3u9hOiNILgs8aS7RyiKJs2hA1EFFfZNfdjw0GAf1ytAUPw4kuURgqJIdugAFEG6rK3uiVF4Rrggl0uSuG2izcOh6AW3WQ9xOr9QkNl8cVBP7LE8mVT5jXZra2vr+/QHemJhuINzQYYAAAAASUVORK5CYII="
+              href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAABwCAAAAAA4MAG1AAAAAXNCSVQI5gpbmQAAAfxJREFUaIHtmVGTwyAIhJOb+/9/2XtLNQrsLrST3rhP6dTwBUQ05Di2tra2bJ3XVeNv0UgwSMWpJB6WIJEsYZ5E1H0sy8NZ08jG/M2gfFNrM8HDGPoBxw22pRU1kSAr/SB0ZhWfDqlOiKReoFMqiXeqwKcPkrDwySQ6fD5JqYUaqVI+SdxeBdJ/jJ4j2t0Kn7DZfH70+Fwp8AlcCiJJSP/fNOed5wgJxPt0i1vivMdNAVEYc7nHVGApIwROhsTuKCqJ37kEkrg9BqTzGJMxsQkDuaccwjVSEQpaTyWoibS0VHFG4muE6hT4plYQP9SnPAp/d7eX1Yo8h+aJZ6Ns/Ih39yQKW08+Cltt8v7UOvtQHaYyYrBgOm+0YLjcA+JktnrILDezoi0GpEiD2nzpOM2S1lMFgHifVigEJERvRkEgZZ4sg0FiZitsu1yKVgDb8V2MwUCaTwur8ZqO+uWGBXBYr1eFXdexhhoKBX7XkKZz1Bf0YbEdpII0CkDpc82+xMsk+qPN5zpUok9CPdJIV1ElGjtS9F72iVzPdKjiT3u9hOiNILgs8aS7RyiKJs2hA1EFFfZNfdjw0GAf1ytAUPw4kuURgqJIdugAFEG6rK3uiVF4Rrggl0uSuG2izcOh6AW3WQ9xOr9QkNl8cVBP7LE8mVT5jXZra2vr+/QHemJhuINzQYYAAAAASUVORK5CYII="
               id="image1408" />
          </mask>
          <clipPath
@@ -812,9 +812,22 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   clip-path="url(#clipPath710)"
                   transform="matrix(1.0311713,0,0,1,-15.844783,0)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,189.38,513.94)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb" 
+                    
+                    
                     id="text714"><tspan
                       x="75.599998 79.199997 82.199997 88.199997 94.199997 100.2 106.2 112.2 118.308 124.308 130.308 136.308 142.308 148.308 154.308 160.308 166.308 172.308 178.308 184.308 190.308 196.308 202.308 208.308 214.308 220.308 226.308 232.308 238.308 244.308 250.308 256.30801 262.30801 268.30801 274.30801 280.30801 286.30801 292.30801 298.30801 304.30801 310.30801"
                       id="tspan712">: _______________________________________</tspan></text>
@@ -827,9 +840,22 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g718"
                   clip-path="url(#clipPath722)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,505.75,513.94)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb" 
+                                       
                     id="text726"><tspan
                       x="0 6 12 18 24 30 36 42 48 54 60 66 72 78 84 90 96 102 108 114"
                       y="0"
@@ -842,9 +868,22 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g730"
                   clip-path="url(#clipPath734)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,625.78,513.94)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb" 
+
                     id="text738"><tspan
                       x="0 6 12 18 24"
                       y="0"
@@ -857,9 +896,22 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g742"
                   clip-path="url(#clipPath746)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,655.78,513.94)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                    
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb"                     
+                    
                     id="text750"><tspan
                       x="0 6"
                       y="0"
@@ -872,9 +924,23 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g754"
                   clip-path="url(#clipPath758)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,667.78,513.94)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  white-space="pre"
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb"                  
+
                     id="text762"><tspan
                       x="0 6 12 18"
                       y="0"
@@ -900,13 +966,27 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g806"
                   clip-path="url(#clipPath810)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,216.5,484.78)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                    
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  white-space="pre"
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb"                  
+                    
                     id="text814"><tspan
-                      x="0 3.6000001 6.6000004 12.6"
+                      x="12.6"
                       y="0"
-                      id="tspan812">: __</tspan></text>
+                      id="tspan812">   :</tspan></text>
                </g>
              </g>
              <g
@@ -916,9 +996,23 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g818"
                   clip-path="url(#clipPath822)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,235.1,484.78)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                  
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  white-space="pre"
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb"
+                    
                     id="text826"><tspan
                       x="0 6 12 18 24 30 36 42 48 54 60"
                       y="0"
@@ -944,23 +1038,50 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g846"
                   clip-path="url(#clipPath850)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,189.38,455.74)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  fill="#000000"
+                  fillOpacity="1"
+                  fillRule="nonzero"
+                  stroke="none"
+                  writing-mode="lr-tb"
+                    
                     id="text854"><tspan
                       x="0"
                       y="0"
                       id="tspan852" /></text>
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(0.75000002,0,0,-0.75000002,11.315871,610.11404)"
                     id="text23638"
-                    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect23640);display:inline;fill:#060505"><tspan
-                      x="226.31836"
+
+                  fontVariant="normal"
+                  font-weight="bold"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="24px"
+                  font-family="sans-serif"
+
+                  white-space="pre"
+                  fill="#060505"
+
+                  display="inline"
+                  shape-inside="url(#rect23640)"
+
+                  ><tspan
+                      x="235.31836"
                       y="202.95062"
                       id="tspan25223"> <tspan
-        style="font-size:17.7773px"
-        id="tspan25221">Adderess</tspan></tspan></text>
+        font-size="22.7773px"
+        id="tspan25221">Address</tspan></tspan></text>
                </g>
              </g>
              <g
@@ -970,9 +1091,26 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g858"
                   clip-path="url(#clipPath862)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,234.86,455.74)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+ 
+               fontVariant="normal"
+               font-weight="600"
+               fontStretch="normal"
+               font-style="normal"
+               font-size="12px"
+               font-family="Avenir Next LT Pro Demi"
+
+               white-space="pre"
+
+               fill-opacity="1"
+               fill-rule="nonzero"
+               stroke="none"
+               fill="#000000"
+
+               writing-mode="lr-tb"                    
+                    
+                    
                     id="text866"><tspan
                       x="0 3.6000001 6.6000004 12.6 18.6 24.6 30.600002 36.600002 42.600002 48.600002 54.600002 60.600002 66.600006 72.708 78.708 84.708 90.708 96.708008 102.70801 108.70801 114.70801 120.70801 126.70801 132.70801 138.70801 144.70801 150.70801 156.70801 162.70801 168.70801 174.70801 180.70801 186.70801 192.70801 198.70801 204.70801 210.70801 216.70801 222.70801 228.70801 234.70801 240.70801 246.70801 252.70801 258.70801 264.70801 270.70801 276.70801 282.70801 288.70801 294.70801 300.70801 306.70801 312.70801 318.70801 324.70801 330.70801 336.70801 342.70801 348.70801 354.70801 360.70801 366.70801 372.70801 378.70801 384.70801 390.70801"
                       y="0"
@@ -984,7 +1122,7 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                <g
                   id="g906"
                   clip-path="url(#clipPath910)" />
-             </g>
+               </g>
              <g
                 id="g844-5"
                 transform="matrix(1.398924,0,0,1.6084568,-76.653687,-251.3152)">
@@ -992,63 +1130,168 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                   id="g846-6"
                   clip-path="url(#clipPath850-7)">
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,189.38,455.74)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                    
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  white-space="pre"
+
+                  fill-opacity="1"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  fill="#000000"
+
+                  writing-mode="lr-tb"                  
+                                                         
                     id="text854-8"><tspan
                       x="0"
                       y="0"
                       id="tspan852-1" /></text>
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(0.75000002,0,0,-0.75000002,11.315871,610.11404)"
                     id="text23638-1"
-                    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect23640-42);display:inline;fill:#060505"><tspan
-                      x="226.31836"
+
+                  fontVariant="normal"
+                  font-weight="bold"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="24px"
+                  font-family="sans-serif"
+
+                  white-space="pre"
+
+                  display="inline"
+                  fill="#060505"
+
+                  shape-inside="url(#rect23640-42)"
+                  writing-mode="lr-tb"
+
+                  ><tspan
+                      x="235.31836"
                       y="202.95062"
                       id="tspan25227"> <tspan
-        style="font-size:17.7773px;-inkscape-font-specification:'sans-serif, Normal'"
+        font-size="22.7773px"
+        inkscape-font-specification="sans-serif, Normal"
         id="tspan25225">DOB</tspan></tspan></text>
                </g>
              </g>
-             <g
-                id="g844-5-7"
-                transform="matrix(1.5291672,0,0,2.1476846,-76.200397,-483.4849)">
-               <g
-                  id="g846-6-1"
-                  clip-path="url(#clipPath850-7-6)"
-                  transform="translate(-187.39475,25.79586)">
+
+
+      <g
+         id="g844-5-7"
+         transform="matrix(1.5291672,0,0,2.1476846,-76.200397,-483.4849)">
+         <g
+            id="g846-6-1"
+            clip-path="url(#clipPath850-7-6)"
+            transform="translate(-187.39475,25.79586)">
+
+
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(1,0,0,-1,189.38,455.74)"
-                    style="font-variant:normal;font-weight:600;font-size:12px;font-family:'Avenir Next LT Pro Demi';-inkscape-font-specification:'Avenir Next LT Pro Demi';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-                    id="text854-8-6"><tspan
+
+                  fontVariant="normal"
+                  font-weight="600"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="12px"
+                  font-family="Avenir Next LT Pro Demi"
+
+                  white-space="pre"
+                  fill-opacity="1"
+                  fill-rule="nonzero"
+                  stroke="none"
+
+                  fill="#000000"
+
+                  writing-mode="lr-tb"
+
+
+
+
+                    id="text854-8-6"
+                  ><tspan
                       x="0"
                       y="0"
                       id="tspan852-1-7" /></text>
                  <text
-                    xml:space="preserve"
+                    space="preserve"
                     transform="matrix(0.49046306,0,0,-0.3492133,239.07606,478.13432)"
                     id="text24331"
-                    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect24333);display:inline;fill:#060505"><tspan
-                      x="232.60352"
+                    
+                  fontVariant="normal"
+                  font-weight="bold"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="36px"
+                  font-family="sans-serif"
+
+                  white-space="pre"
+                  shape-inside="url(#rect24333)"
+
+                  display="inline"
+                  fill="#060505"
+
+                  ><tspan
+                      x="238.60352"
                       y="113.55697"
+                      
                       id="tspan25229"> Name</tspan></text>
-               </g>
-             </g>
-             <text
-                xml:space="preserve"
-                transform="matrix(0.87409936,0,0,-0.75000002,-47.420851,616.71497)"
-                id="text23854"
-                style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect23856);shape-padding:1.25732;display:inline;fill:#060505"><tspan
-                  x="388.51172"
-                  y="205.46429"
-                  id="tspan25231">1800 Lavaca Street, San Francisco, </tspan><tspan
-                  x="388.51172"
-                  y="235.46429"
-                  id="tspan25233">California 94109 Apt 12345678910</tspan></text>
-           </g>
          </g>
+      </g>
+
+
+
+      <foreignObject 
+            x="380.976"
+            y="195.943" 
+
+            space="preserve"
+            transform="matrix(0.87409936,0,0,-0.75000002,-47.420851,616.71497)"
+            id="text854-8-6"
+                  
+                  fontVariant="normal"
+                  font-weight="bold"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="14px"
+                  font-family="sans-serif"
+
+                  white-space="pre"
+                  shape-inside="url(#rect23856)"
+                  shape-padding="1.25732"
+                  display="inline"
+                  fill="#060505"
+
+                  inkscape-font-specification='sans-serif, Bold'
+
+                  writing-mode="lr-tb"
+    
+            width="529.071" 
+            height="53.063"
+      >
+
+        {remedyPhysicalAddress}
+        
+
+  </foreignObject>
+
+
+
+
+      </g>
+   </g>
+
+
+
+
          <g
             id="g912">
            <g
@@ -1075,19 +1318,48 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                     clip-path="url(#clipPath944)">
                    <path
                       d="m 75.96,417.91 h 626.86 v 1.08 H 75.96 Z"
-                      style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+                      fill="#000000"
+                      fill-opacity="1"
+                      fill-rule="evenodd"
+                      stroke="none"
                       id="path946" />
                    <path
                       d="m 75.96,420.07 h 626.86 v 2.184 H 75.96 Z"
-                      style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+                      fill="#000000"
+                      fill-opacity="1"
+                      fill-rule="evenodd"
+                      stroke="none"
                       id="path948" />
                    <path
                       d="m 75.96,423.34 h 626.86 v 1.08 H 75.96 Z"
-                      style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none"
+                      fill="#000000"
+                      fill-opacity="1"
+                      fill-rule="evenodd"
+                      stroke="none"
                       id="path950" />
                  </g>
                </g>
              </g>
+
+
+             fontVariant="normal"
+            font-weight="bold"
+            font-size="18px"          
+            font-family="Calibri"
+            fill-opacity="1"
+            fill-rule="nonzero"
+            stroke="none"
+
+            white-space="pre"
+            shape-inside="url(#rect2144)"
+            display="inline"
+            fill="#000000"
+
+            writing-mode="lr-tb" 
+
+
+
+
              <g
                 id="g952">
                <g
@@ -1108,9 +1380,25 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
               id="g970"
               clip-path="url(#clipPath974)">
              <text
-                xml:space="preserve"
+                space="preserve"
                 transform="matrix(1,0,0,-1,72,384.67)"
-                style="font-variant:normal;font-weight:bold;font-size:18px;font-family:Calibri;-inkscape-font-specification:Calibri-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                
+            fontVariant="normal"
+            font-weight="bold"
+            font-size="18px"          
+            font-family="Calibri"
+            fill-opacity="1"
+            fill-rule="nonzero"
+            stroke="none"
+
+            white-space="pre"
+            shape-inside="url(#rect2144)"
+            display="inline"
+            fill="#000000"
+
+            writing-mode="lr-tb"               
+                
+                
                 id="text978"><tspan
                   id="tspan976"
                   x="0"
@@ -1123,9 +1411,21 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
               id="g982"
               clip-path="url(#clipPath986)">
              <text
-                xml:space="preserve"
+                space="preserve"
                 transform="matrix(1,0,0,-1,104.3,384.67)"
-                style="font-variant:normal;font-weight:bold;font-size:18px;font-family:Calibri;-inkscape-font-specification:Calibri-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+            fontVariant="normal"
+            font-weight="bold"
+            font-size="18px"          
+            font-family="Calibri"
+            fill-opacity="1"
+            fill-rule="nonzero"
+            stroke="none"
+
+            fill="#000000"
+
+            writing-mode="lr-tb"              
+                
                 id="text990"><tspan
                   x="0"
                   id="tspan988"
@@ -1150,9 +1450,21 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
               id="g1010"
               clip-path="url(#clipPath1014)">
              <text
-                xml:space="preserve"
+                space="preserve"
                 transform="matrix(1,0,0,-1,72,330.43)"
-                style="font-variant:normal;font-weight:bold;font-size:18px;font-family:Calibri;-inkscape-font-specification:Calibri-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+            fontVariant="normal"
+            font-weight="bold"
+            font-size="18px"          
+            font-family="Calibri"
+            fill-opacity="1"
+            fill-rule="nonzero"
+            stroke="none"
+
+            fill="#000000"
+
+            writing-mode="lr-tb"                
+                
                 id="text1018"><tspan
                   x="0 8.5139999 12.942 21.474001 26.441999"
                   y="0"
@@ -1193,7 +1505,20 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
 <text
    space="preserve"
    transform="matrix(1,0,0,-1,72,212.81)"
-   style="font-variant:normal;font-weight:bold;font-size:18px;font-family:Calibri;-inkscape-font-specification:Calibri-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+
+
+   font-style="normal"
+            fontVariant="normal"
+            font-weight="bold"
+            font-size="18px"          
+            font-family="Calibri"
+            fill-opacity="1"
+            fill-rule="nonzero"
+            stroke="none"
+            fill="#000000"
+
+            writing-mode="lr-tb"
+
    id="text1062"><tspan
    id="tspan1060"
    x="0"
@@ -1203,7 +1528,7 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
 
 <foreignObject 
     x="141.092"
-    y="362.442" 
+    y="354.442" 
 
    space="preserve"
    transform="matrix(0.75000002,0,0,-0.75000002,0,612.00002)"
@@ -1262,17 +1587,34 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                 ><tspan
                   x="154.65039"
                   y="555.0802"
-                  id="tspan25247">60x60 M43.3</tspan></text>
-             <text
+                  id="tspan25247">{remedyQuantity}</tspan></text>
+            <text
                 space="preserve"
                 transform="matrix(0.68001642,0,0,-0.75000002,14.975794,595.02621)"
                 id="text2172"
-                style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect2174);display:inline;fill:#000000"><tspan
-                  x="197.39844"
+
+                  fontVariant="normal"
+                  font-weight="bold"
+                  fontStretch="normal"
+                  font-style="normal"
+                  font-size="16px"
+                  font-family="sans-serif"
+
+                  white-space="pre"
+                  shape-inside="url(#rect2174)"
+
+                  fill="#000000"
+                  display="inline"
+            ><tspan
+
+
+                                  
+                  x="240.39844"
                   y="643.01116"
                   id="tspan25251"><tspan
-                    style="font-size:24px"
-                    id="tspan25249">12/12/2023</tspan></tspan></text>
+                    font-size="24px"
+                    id="tspan25249">{remedyPrescribedDate}</tspan></tspan>
+             </text>
              <text
                 space="preserve"
                 transform="matrix(0.75000002,0,0,-0.75000002,0.94298923,612.00002)"
@@ -1611,11 +1953,11 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
             fill-opacity="1"
             fill-rule="nonzero"
             stroke="none"                
-                
+             
                 id="text1314"><tspan
-                  x="0 5.49792 11.02896 16.427521 21.92544 27.45648 32.855042 38.352959 43.883999 49.282558 54.780479 60.31152 65.710083 71.208 76.739037 82.137604 87.635521 93.166557 98.565117"
+                  x="0 5.52002 11.02896 16.427521 21.92544 27.45648 32.855042 38.352959 43.883999 49.282558 54.780479 60.31152 65.710083 71.208 76.739037 82.137604 87.635521 93.166557 98.565117"
                   y="0"
-                  id="tspan1312">___________________</tspan></text>
+                  id="tspan1312">______________________</tspan></text>
            </g>
          </g>
          <g
@@ -1672,7 +2014,7 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                 id="text1366"><tspan
                   x="0 5.52002"
                   y="0"
-                  id="tspan1364">__</tspan></text>
+                  id="tspan1364"></tspan></text>
            </g>
          </g>
          <g
@@ -1698,7 +2040,7 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
                 
                 
                 id="text1378"><tspan
-                  x="0 5.49792 11.02896 16.427521 21.92544 27.45648 32.855042 38.352959 43.883999 49.282558 54.780479 60.31152 65.710083 71.208 76.739037 82.137604 87.635521 93.166557 98.565117 103.96368 109.4616 114.99264 120.49056 125.9112 131.40912 136.94016 142.33871 147.83664 153.36768 158.76624 164.26416 169.7952 175.19376 180.69168 186.22272 191.62128 197.1192 202.53984 208.03777 213.5688 218.96736 224.36592 229.86385 235.39488 240.89281 246.31345 251.81136 257.34241 262.74097 268.23889 273.76993 279.16849 284.66641"
+                  x="0 5.52002 11.02896 16.427521 21.92544 27.45648 32.855042 38.352959 43.883999 49.282558 54.780479 60.31152 65.710083 71.208 76.739037 82.137604 87.635521 93.166557 98.565117 103.96368 109.4616 114.99264 120.49056 125.9112 131.40912 136.94016 142.33871 147.83664 153.36768 158.76624 164.26416 169.7952 175.19376 180.69168 186.22272 191.62128 197.1192 202.53984 208.03777 213.5688 218.96736 224.36592 229.86385 235.39488 240.89281 246.31345 251.81136 257.34241 262.74097 268.23889 273.76993 279.16849 284.66641"
                   y="0"
                   id="tspan1376">_____________________________________________________</tspan></text>
            </g>
@@ -1754,10 +2096,10 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
 
          ><tspan
               x="365.87891"
-              y="126.25335"
+              y="128.25335"
               id="tspan25259"><tspan
-                style="font-size:24px"
-                id="tspan25257">Name goes here and can extend to here.</tspan></tspan>
+                font-size="24px"
+                id="tspan25257">{remedyPatientName}</tspan></tspan>
          </text>
          <text
             space="preserve"
@@ -1772,11 +2114,11 @@ export const RemedySvgPdfWordDoc = (remedyPatientName, remedyQuantity, remedySig
             fill="#000000"
             ><tspan
               
-              x="300.5"
-              y="163.9721"
+              x="310.87891"
+              y="166.9721"
               id="tspan25263"><tspan
-                style="font-size:24px"
-                id="tspan25261">12/12/2023</tspan></tspan></text>
+                font-size="24px"
+                id="tspan25261">{remedyDOB}</tspan></tspan></text>
          <image
             width="253.46071"
             height="58.401768"
