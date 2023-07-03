@@ -17,8 +17,13 @@ import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia,
  
   import { addyShortner, formatDateFourDigitYear, formatDateTwoDigitYear, convertNumberDateToRawString, convertBigNumberToFourDigitYear,
     formatDateTwoDigit, convertNumberDateToFourDigitString, convertNumberDateToTwoDigitString, convertBigNumberToTwoDigitYear, 
-    convertBigNumberToRawString, RemedySvgPdfGenerator, RemedySvgPdfInkscape } from '../utils'
+    convertBigNumberToRawString, RemedySvgPdfGenerator, RemedySvgPdfInkscape, RemedySvgPdfWordDoc } from '../utils'
     //work out: dayCalculatorDoc
+
+
+    import {RemedySvgOrderMri} from '../napoleon/imaging/mri'
+
+    import { RemedySvgOrderRx } from '../napoleon/script/rx'
 
     import { RemedySvgForJorgeRucker } from '../doctorSigGeorge'
 
@@ -271,7 +276,18 @@ const handleConvertClickerInternal = async () => {
         // const svgElement = await RemedySvgForJorgeRucker(nft?.metadata.name, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value), 
         // nft?.metadata.attributes[10].value, nft?.metadata.description, nft?.metadata.attributes[0].value, remedyDisp )
 
-        const svgElement = await RemedySvgPdfInkscape(nft?.metadata.name, "38", nft?.metadata.description)
+        // const svgElement = await RemedySvgPdfInkscape(nft?.metadata.name, "38", nft?.metadata.description)
+
+        // const svgElement = await RemedySvgPdfWordDoc(nft?.metadata.name, "60", nft?.metadata.description)
+
+// (remedyPatientName, remedyDOB, remedyQuantity, remedyMedication, remedyPhysicalAddress, remedySig, remedyPrescribedDate)
+        // const svgElement = await RemedySvgOrderMri(nft?.metadata.name, "03/08/1938", "M54.38", nft?.metadata.attributes[0].value,
+        // "1800 Lavaca Street, San Francico CA 94109 Apt #12345678910", nft?.metadata.description, "7/1/2023")
+
+        const svgElement = await RemedySvgOrderRx(nft?.metadata.name, "03/08/1938", nft?.metadata.attributes[2].value, nft?.metadata.attributes[0].value,
+        "1800 Lavaca Street, San Francico CA 94109 Apt #12345678910", nft?.metadata.description, "7/1/2023")
+        
+        
 
         console.log("Jorge svgElement Test is ", svgElement)
         setGenerateSVGAuto(svgElement)
