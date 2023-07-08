@@ -53,6 +53,15 @@ useEffect(()=> {
 }, [])
 
 const [medication, setMedication] = useState([]);
+// const [medication, setMedication] = useState({
+//   name: "",
+//   sig: "",
+//   id: "",
+//   strength:"",
+//   quantity:"",
+//   daily_max:"",
+//   daily_supply:""
+// });
 
 // const [wtf3provider, setWtf3Provder] = useState('');
 
@@ -305,8 +314,10 @@ const mintNFT = async (transferForm) => {
     let date_prescribed_Ref = inputDatePrescribed.current.value;
       console.log('Date Prescribed is:', date_prescribed_Ref)
 
-// Set initial "Next Fill Date" plus 1
-    const nextFillDate = dayCalculatorDoc(date_prescribed_Ref, numberOfDays);
+// Set initial "Next Fill Date" plus 1 #FixNextFill
+    // const nextFillDate = dayCalculatorDoc(date_prescribed_Ref, numberOfDays);
+    const nextFillDate = date_prescribed_Ref;
+
 
 
     // await _createScript({ ...form, wallet_address: wallet_address, name: name, description: description_Ref, medication: medication_Ref, dob: dob,
@@ -344,11 +355,19 @@ const mintNFT = async (transferForm) => {
     //   String(perDiemMax), quantity_Ref, doctor, dea, date_prescribed_Ref, new Date(date_prescribed_Ref).getTime()] })
 
 //v12.7 version: Added two additional parameters, date_prescribed_Ref formatted and perDiemMax in its own slot.
+
+
+// 1 - wallet_address (string)
+// 2 - patient name (string)
+// 3 - 
+
     const data = await _createScript({ args: [wallet_address, name, description_Ref, medication_Ref, dob, 
-      pt_physical_address, quantity_Ref, doctor, dea, new Date(date_prescribed_Ref).getTime(), 
-      perDiemMax, new Date(nextFillDate).getTime()] })
+      pt_physical_address, quantity_Ref, doctor, dea, new Date(date_prescribed_Ref).getTime(), perDiemMax, 
+      // new Date(nextFillDate).getTime()
+      new Date(nextFillDate).getTime()
+    ] })
 
-
+//expiration date. 
 
     console.log("Rx NFT Data Set w/ date prescribed as:", data)
 
@@ -474,8 +493,23 @@ const mintNFT = async (transferForm) => {
   const loadMedications = async () => {
     setMedication([]);   
     const result = await axios.get("https://rxminter.com/php-react/viewmeds.php");
-    console.log(result);
-    setMedication(result.data.meds);
+    console.log("Medication object from server are: ",result);
+    console.log("Medications names from server are: ",result.data.doccs)
+
+    // let new_array = []; 
+    // const medListLength = result.data.length
+    // console.log("length of result.data meds is: ",medListLength)
+
+    // for(let i=0;i<result.data.length; i++){
+    //   new_array.push(result.data.pop())
+    // }
+    // console.log("new_array is now:",new_array)
+
+    // const names = data.map(item => item.name);
+    // console.log(names);
+
+    setMedication(result.data.doccs);
+    console.log("Medications is #NOW: ",medication)
     // navigate('/');
   }
 
@@ -868,26 +902,37 @@ const getTodayPSTDate = () => {
                         </select>
                     </div> */}
 
-{/* MEDICATION */}
-                  <div className="row">         
+{/* MEDICATION CHANGED TO FREE TEXT ON THU 7/7/23 */}
+
+                    <div className="row">
+                            <div className="col-md-2">Medication: </div>
+                            <div className="col-md-10">
+                                {/* <input type="text" name="name" className="form-control" value={name} onChange={(e) => handleChange(e)} /> */}             
+                                {/* <input type="text" name="name" className="form-control" value={form.name} onChange={(e) => handleChange(e)} />   */}
+                                {/* <input type="text" name="description" className="form-control" value={form.description} onChange={(e) => handleFormFieldChange('description', e)} />   */}
+                                {/* <input type="text" name="description" className="form-control" value={form.description} onChange={(e) => handleFormFieldChange(e)} /> */}
+                                <input type="text" name="medication" className="form-control" ref={inputMedication} />
+                            </div>
+                    </div>
+                  {/* <div className="row">         
                               <div className="input-group mb-3">    
-                              {/* <div className="input-group input-group-lg"> */}
+                            
                                   <div className="input-group-prepend">
-                                      {/* <span className="input-group-text">Medication:</span> */}
+                                      
                                       <span class="input-group-text" ref={medLabel}>Medication: </span>
-                                      {/* <span>Medication:</span> */}
+                                    
                                   </div>
 
                                   <select className="form-select" aria-label="Select A Medication" name="medication" ref={inputMedication} >
                                       <option selected>Select A Medication</option>
 
-                                      {medication.map((medication, index) => (
-                                              <option value={`${medication.name}`} key={`${index}`}>{medication.name}</option>                                   
+                                      {medication?.map((med, index) => (
+                                              <option value={`${med.name}`} key={`${index}`}>{med.name}</option>                                   
                                       ))}
                                   </select>
                               
                               </div>
-                    </div> 
+                    </div>  */}
 
 {/* QUANTITY PRESCRIBED */}
                     <div className="row">
@@ -897,7 +942,7 @@ const getTodayPSTDate = () => {
                                 {/* <input type="text" name="name" className="form-control" value={form.name} onChange={(e) => handleChange(e)} />   */}
                                 {/* <input type="text" name="quantity" className="form-control" value={form.quantity} onChange={(e) => handleFormFieldChange('quantity', e)} /> */}
                                 {/* <input type="text" name="quantity" className="form-control" value={form.quantity} onChange={(e) => handleFormFieldChange(e)} />    */}
-                                <input type="number" name="quantity" className="form-control" ref={inputQuantity} /> 
+                                <input type="text" name="quantity" className="form-control" ref={inputQuantity} /> 
                             </div>
                     </div>
 
