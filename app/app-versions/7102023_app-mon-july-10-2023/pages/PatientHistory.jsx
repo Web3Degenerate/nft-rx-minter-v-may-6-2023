@@ -253,12 +253,12 @@ const [search, setSearch] = useState('');
              {/* {nfts?.map((nft, index) => ( */}
 
         {nfts?.length > 0 ? 
-                
+ 
             nfts?.filter((nft) => {
                return search.toLowerCase() === '' ? nft : nft.metadata.name.toLowerCase().includes(search) || nft.metadata.attributes[0].value.toLowerCase().includes(search)
             }
 
-            ).map((nft, index) => (
+            ).filter(nft => nft.metadata.attributes[2].value > 0).map((nft, index) => (
 
                 <>
                     <tr key={`${index}`}>

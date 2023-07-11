@@ -29,7 +29,7 @@ import { ethers } from 'ethers';
 import { addyShortner, formatDateFourDigitYear, formatDateTwoDigitYear, formatDateTwoDigit, 
   convertNumberDateToRawString, convertNumberDateToFourDigitString, convertNumberDateToTwoDigitString,
   convertBigNumberToFourDigitYear, convertBigNumberToTwoDigitYear } from '../utils'
-  
+
 import { solidityContractAddress } from '../constants'
 
 import { GetMedication } from '../components';
@@ -731,7 +731,7 @@ if (loading) {
 
 
             {nfts?.length > 0 ? 
-              nfts.map((nft) => (
+              nfts.filter(nft => nft.metadata.attributes[2].value > 0).map((nft) => (
           
               <div className="item text-left">  
                 <div className="title" onClick={() => toggleNFT(nft.metadata.id)}>
@@ -760,7 +760,7 @@ if (loading) {
 
                                   {/* <p><b>DOB:</b> {nft.metadata.dob}</p> */}
                                   <p className="hyphens"><b>SIG:</b> {nft.metadata.description}</p>
-                                  <p><b>Medication</b> {nft.metadata.attributes[0].value}</p>
+                                  <p className="hyphens"><b>Medication</b> {nft.metadata.attributes[0].value}</p>
                                   {/* <p><b>Medication</b> { getMedicationString(nft.metadata.id).toString()  }</p> */}
                                   {/* <p><b>Medication</b> { useContractRead(contract, "getMedication", [nft.metadata.id])  }</p> */}
                                   
