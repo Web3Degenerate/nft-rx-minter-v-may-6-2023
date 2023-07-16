@@ -4,6 +4,7 @@ import axios from 'axios';
 import html2canvas from 'html2canvas';
 //https://www.npmjs.com/package/html2canvas  => https://github.com/niklasvh/html2canvas 
 
+import { ethers } from 'ethers'
 
 import { useAddress, useContract, ConnectWallet, useOwnedNFTs, ThirdwebNftMedia, 
     useTransferNFT, useMetadata, useNFT, MediaRenderer, useContractRead } from "@thirdweb-dev/react";
@@ -53,7 +54,7 @@ const PatientFaxScript = () => {
 
   const { data: nft, isLoading: isLoadingNFT } = useNFT(contract, id);
 
-    // console.log("Single nft to fax is: ",nft)
+    console.log("Single #nft to fax is: ",nft)
 
     // const { data: nfts, isLoading: loading } = useOwnedNFTs(contract, address);
     // console.log("owned NFTs from connected wallet are :",nfts)
@@ -153,6 +154,7 @@ const handleSubmitTest = async (e) => {
     if (confirm(`Transfer Prescription Item #${nft?.metadata.id} to Pharmacy: ${pharmacyFax.pharmacy_name} at address: ${pharmacyFax.pharmacy_wallet} for ${nft?.metadata.description} for ${nft?.metadata.attributes[0].value}. Okay ${nft?.metadata.name}? Fax: ${pharmacyFax.pharmacy_fax} `) == true){
     //   await _safeTransferFromToPharmacy({ ...rxWallet })
     sendFax()
+    // _safeTransferFromToPharmacy()
     }
 
   }
@@ -284,8 +286,34 @@ const handleConvertClickerInternal = async () => {
         // const svgElement = await RemedySvgOrderMri(nft?.metadata.name, "03/08/1938", "M54.38", nft?.metadata.attributes[0].value,
         // "1800 Lavaca Street, San Francico CA 94109 Apt #12345678910", nft?.metadata.description, "7/1/2023")
 
-        const svgElement = await RemedySvgOrderRx(nft?.metadata.name, "03/08/1938", nft?.metadata.attributes[2].value, nft?.metadata.attributes[0].value,
-        "1800 Lavaca Street, San Francico CA 94109 Apt #12345678910", nft?.metadata.description, "7/1/2023")
+        let unhashedName
+        let unhashedDob
+        let unhashed_pt_physical_address
+
+
+        if(nft?.metadata.name.startsWith('0x')){
+            unhashedName = ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft?.metadata.name))
+        }else{
+            unhashedName = nft?.metadata.name
+        }
+
+        if(nft?.metadata.attributes[1].value.startsWith('0x')){
+            unhashedDob = formatDateFourDigitYear(ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft?.metadata.attributes[1].value)))
+        }else{
+            unhashedDob = formatDateFourDigitYear(nft?.metadata.attributes[1].value)
+        }
+
+
+        if(nft?.metadata.attributes[10].value.startsWith('0x')){
+            unhashed_pt_physical_address = ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft?.metadata.attributes[10].value))
+        }else{
+            unhashed_pt_physical_address = nft?.metadata.attributes[10].value
+        }
+
+
+
+        const svgElement = await RemedySvgOrderRx(unhashedName, unhashedDob, nft?.metadata.attributes[2].value, nft?.metadata.attributes[0].value,
+            unhashed_pt_physical_address, nft?.metadata.description, convertBigNumberToFourDigitYear(nft?.metadata.attributes[5].value))
         
         
 
