@@ -470,7 +470,7 @@ const _safeTransferFromToPharmacy = async (rxWallet) => {
 
   // let protectPatient = ethers.utils.base64.encode(user_role.current.value.toHexString());
   // let protectPatient = ethers.utils.formatBytes32String(user_role.current.value);
-
+ 
 
   //***************** ethereum.org on RLP: https://ethereum.org/en/developers/docs/data-structures-and-encoding/rlp/  ************************************/
   let protectPatient = ethers.utils.RLP.encode(ethers.utils.toUtf8Bytes(user_role.current.value));
@@ -555,14 +555,60 @@ const [nftzz, setNFftzz] = useState([{
 
 // setPatient({name: "", wallet_address: "", dob: "", email:"", id:""});
 
+// let originalText = "Donald Trump 2.0"
+// const hashedText = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(originalText + '\0'));
+// const unhashedText = ethers.utils.parseBytes32String(hashedText);
+
+// const originalText = 'Hello, world!';
+// let hashedText = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(originalText + '\0'));
+// const unhashedText = ethers.utils.parseBytes32String(hashedText);
 
 
+//JUST USE RLP - Sat 7/15/2023
+// let testPtNamer = "Donald Trump 2.0"
+// let originalText = ethers.utils.RLP.encode(ethers.utils.toUtf8Bytes(testPtNamer));
+
+// // Online RLP Decoder (not to string): https://toolkit.abdk.consulting/ethereum#rlp
+// let show_RLP_decoded = ethers.utils.RLP.decode(originalText);
+
+// // let show_RLP_decoded = ethers.utils.toUtf8String(show_RLP_decoded);
+// let showPatient = ethers.utils.toUtf8String(ethers.utils.RLP.decode(originalText));
+
+
+//********************* CHAT GPT WAS WORKING - GOT TRUMS DOB WITH JUST RLP VALUE (7/15/23) ************** */
+// const ethers = require('ethers');
+
+// const rlpEncodedData = "0x8a313934362d30362d3134";
+// const decodedData = ethers.utils.RLP.decode(ethers.utils.hexDataSlice(rlpEncodedData, 1).toString());
+
+// console.log(decodedData); // "1946-06-14"
+//************************************************************************************************************* */
 
 let displayPatientName
+let convertPatientName
+let grabPatientName
+
   if(nfts){
+    // let unhashedName = ethers.utils.parseBytes32String(nft.metadata.name)
+          //ethers.utils.parseBytes32String(retrievedHashedText)    
+          // displayPatientName = `(for ${nft.metadata.name})`
+          // displayPatientName = `(for ${ethers.utils.parseBytes32String(nft.metadata.name)})`
+    // let displayPatientName
     nfts.map((nft) => (
-      displayPatientName = `(for ${nft.metadata.name})`
+      grabPatientName = nft.metadata.name
+ 
     ))
+    // let getPatientName = grabPatientName.slice(2)
+    // let hashedText = ethers.utils.toUtf8String(ethers.utils.parseBytes32String(grabPatientName))
+    // displayPatientName = `(for ${hashedText})`
+    convertPatientName = ethers.utils.toUtf8String(ethers.utils.RLP.decode(grabPatientName));
+    displayPatientName = `(for ${convertPatientName})`
+
+
+    
+    // let padded = ethers.utils.hexZeroPad(getPatientName, 32)
+    // let unhashPatientName = ethers.utils.parseBytes32String(padded)
+    // displayPatientName = `(for ${unhashPatientName})`;
   }
 
 let loggedIn;
@@ -756,10 +802,35 @@ if (loading) {
                               />
 
                                   {/* <p><b>Patient:</b> {nft.metadata.name} | Item #: {nft.metadata.id}</p> */}
-                                  <p><b>Patient:</b> {nft.metadata.name} | <b>DOB:</b> {formatDateFourDigitYear(nft.metadata.attributes[1].value)}</p>
+                                  <p><b>Patient:</b> {nft.metadata.name.startsWith('0x') ? (
+                                      ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft.metadata.name))
+                                      ) : (
+                                        nft.metadata.name
+                                      ) } 
+                                  
+                                  | <b>DOB:</b> {nft.metadata.attributes[1].value.startsWith('0x') ? (
+                                        formatDateFourDigitYear(ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft.metadata.attributes[1].value)))
+                                      ) : (
+                                        formatDateFourDigitYear(nft.metadata.attributes[1].value)
+                                      )
+                                    }
+                                  </p>
+                                  
 
                                   {/* <p><b>DOB:</b> {nft.metadata.dob}</p> */}
-                                  <p className="hyphens"><b>SIG:</b> {nft.metadata.description}</p>
+                                  <p className="hyphens"><b>SIG:</b> {nft.metadata.attributes[10].value.startsWith('0x') ? (
+                                    ethers.utils.toUtf8String(ethers.utils.RLP.decode(nft.metadata.attributes[10].value))
+                                  ) : (
+                                    nft.metadata.attributes[10].value
+                                  )
+                                  
+                                  }
+                                  
+                                  </p>
+
+                                
+                                  
+                                  
                                   <p className="hyphens"><b>Medication</b> {nft.metadata.attributes[0].value}</p>
                                   {/* <p><b>Medication</b> { getMedicationString(nft.metadata.id).toString()  }</p> */}
                                   {/* <p><b>Medication</b> { useContractRead(contract, "getMedication", [nft.metadata.id])  }</p> */}
